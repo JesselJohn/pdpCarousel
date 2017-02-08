@@ -10,7 +10,8 @@ angular.module('pdpSliderApp')
     .directive('pdpSlider', function() {
         return {
             scope: {
-                'curSlide': "="
+                'curSlide': "=",
+                'updateEvent': "@"
             },
             templateUrl: 'views/pdpslider.html',
             restrict: 'E',
@@ -28,8 +29,6 @@ angular.module('pdpSliderApp')
                         /** Swipe Function Variables */
                         onSwipeFn;
 
-                    /** @type {Integer} Track/Set Current Visible Slide */
-                    $scope.curSlide = $scope.curSlide || 0;
                     ///////////////
                     // Functions //
                     ///////////////
@@ -55,10 +54,18 @@ angular.module('pdpSliderApp')
                         };
                     };
 
+                    //////////
+                    // Init //
+                    //////////
+                    updateSliderFn();
+
                     /////////////////////////////
                     // Scope Property Bindings //
                     /////////////////////////////
-
+                    /** Defaults */
+                    $scope.curSlide = $scope.curSlide || 0;
+                    $scope.updateEvent = $scope.updateEvent || "pdpUpdate";
+                    /*************/
                     $scope.swipeLeft = onSwipeFn(1);
                     $scope.swipeRight = onSwipeFn(-1);
 
@@ -66,12 +73,13 @@ angular.module('pdpSliderApp')
                         'length': 0
                     };
 
-                    ////////////////////////////
-                    // Scope Property Watches //
-                    ////////////////////////////
-                    $scope.$watch('curSlide', function(curSlide) {
-                        $scope.curSlide = curSlide;
-                        updateSliderFn();
+                    /////////////////////
+                    // Event Listeners //
+                    /////////////////////
+                    $scope.$on($scope.updateEvent, function(slide) {
+                        $scope.$$postDigest(function() {
+                            updateSliderFn();
+                        });
                     });
                 }
             ]

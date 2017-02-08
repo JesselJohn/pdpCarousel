@@ -4,7 +4,13 @@
 .pdp-carousel-wrapper {
     overflow: hidden;
     width: 100%;
+    -webkit-backface-visibility: hidden;
 }
+
+
+/**
+ * PDP Plugin Styles
+ */
 
 .pdp-carousel {
     @include transition(0.4s ease transform);
@@ -21,7 +27,13 @@
     white-space: normal;
     vertical-align: middle;
     width: 100%;
-    img {
-        width: 100%;
-    }
+}
+
+
+/**
+ * Custom Styles
+ */
+
+.pdp-image {
+    width: 100%;
 }
