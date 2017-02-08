@@ -14,6 +14,7 @@ module.exports = function(grunt) {
 
     // Automatically load required Grunt tasks
     require('jit-grunt')(grunt, {
+        express: 'grunt-express-server',
         useminPrepare: 'grunt-usemin',
         ngtemplates: 'grunt-angular-templates',
         cdnify: 'grunt-google-cdn'
@@ -64,6 +65,23 @@ module.exports = function(grunt) {
                     '.tmp/styles/{,*/}*.css',
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
+            }
+        },
+
+        express: {
+            options: {
+                port: 9000
+            },
+            dev: {
+                options: {
+                    script: '<%= yeoman.server %>',
+                    debug: true
+                }
+            },
+            prod: {
+                options: {
+                    script: 'dist/<%= yeoman.server %>'
+                }
             }
         },
 
@@ -474,9 +492,18 @@ module.exports = function(grunt) {
             'wiredep',
             'concurrent:server',
             'postcss:server',
-            'connect:livereload',
+            'express:dev',
             'watch'
         ]);
+
+        // grunt.task.run([
+        //     'clean:server',
+        //     'wiredep',
+        //     'concurrent:server',
+        //     'postcss:server',
+        //     'connect:livereload',
+        //     'watch'
+        // ]);
     });
 
     grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function(target) {

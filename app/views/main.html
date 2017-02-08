@@ -1,0 +1,9 @@
+<div>
+    <pdp-slider cur-slide="curSlide">
+        <pdp-slider-item ng-repeat="slide in slides track by $index">
+            <img ng-src="{{slide}}" />
+        </pdp-slider-item>
+    </pdp-slider>
+    <button ng-click="curSlide=0">Start</button>
+    <button ng-click="curSlide=8">End</button>
+</div>

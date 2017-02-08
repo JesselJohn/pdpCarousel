@@ -1,0 +1,27 @@
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+.pdp-carousel-wrapper {
+    overflow: hidden;
+    width: 100%;
+}
+
+.pdp-carousel {
+    @include transition(0.4s ease transform);
+    @include translate(0, 0);
+    will-change: transform;
+    padding: 0;
+    list-style: none;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.pdp-carousel-item {
+    display: inline-block;
+    white-space: normal;
+    vertical-align: middle;
+    width: 100%;
+    img {
+        width: 100%;
+    }
+}
