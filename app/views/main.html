@@ -1,9 +1,23 @@
 <div>
-    <pdp-slider cur-slide="curSlide" update-event="pdpUpdate">
-        <pdp-slider-item ng-repeat="slide in slides track by $index">
-            <img class="pdp-image" ng-src="{{slide}}" />
-        </pdp-slider-item>
-    </pdp-slider>
-    <button ng-click="setToStart()">Start</button>
-    <button ng-click="setToEnd()">End</button>
+    <div class="carousel-wrapper">
+        <pdp-slider cur-slide="curSlide" update-event="pdpUpdate" ng-click="fullCarousel=true">
+            <pdp-slider-item ng-repeat="slide in slides track by $index">
+                <img class="carousel-image" ng-src="{{slide}}" />
+            </pdp-slider-item>
+        </pdp-slider>
+        <div class="carousel-controls-wrapper">
+            <div class="carousel-controls" ng-repeat="slide in slides track by $index" ng-class="{'selected':$index===curSlide}" ng-click="setSlide($index)"></div>
+        </div>
+    </div>
+    <div class="carousel-fullscreen-wrapper" ng-show="fullCarousel">
+        <div class="close-button" ng-click="fullCarousel=false">&#10005;</div>
+        <pdp-slider class="carousel-fullscreen" cur-slide="curSlide" update-event="pdpUpdate">
+            <pdp-slider-item ng-repeat="slide in slides track by $index">
+                <img class="carousel-image" ng-src="{{slide}}" />
+            </pdp-slider-item>
+        </pdp-slider>
+        <div class="carousel-controls-wrapper">
+            <div class="carousel-controls" ng-repeat="slide in slides track by $index" ng-class="{'selected':$index===curSlide}" ng-click="setSlide($index)"></div>
+        </div>
+    </div>
 </div>

@@ -1,22 +1,24 @@
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
+@import "mixins";
+
+/**
+ * PDP Plugin Styles
+ */
+
 .pdp-carousel-wrapper {
     overflow: hidden;
     width: 100%;
     -webkit-backface-visibility: hidden;
 }
 
-
-/**
- * PDP Plugin Styles
- */
-
 .pdp-carousel {
     @include transition(0.4s ease transform);
     @include translate(0, 0);
     will-change: transform;
     padding: 0;
+    margin: 0;
     list-style: none;
     white-space: nowrap;
     width: 100%;
@@ -34,6 +36,60 @@
  * Custom Styles
  */
 
-.pdp-image {
+.carousel-image {
     width: 100%;
+}
+
+.carousel-fullscreen-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #FFF;
+}
+
+.carousel-fullscreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.close-button {
+    @include text-shadow(0 0 2px #FFF);
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 45px;
+    height: 40px;
+    display: inline-block;
+    z-index: 1;
+    color: #b2b2b2;
+    line-height: 40px;
+}
+
+.carousel-wrapper {
+    position: relative;
+}
+
+.carousel-controls-wrapper {
+    display: inline-block;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.carousel-controls {
+    @include box-shadow(0 0 3px 1px #FFF);
+    display: inline-block;
+    background: #363636;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    margin: 3px;
+    &.selected {
+        background: #ff00ff;
+    }
 }

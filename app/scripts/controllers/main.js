@@ -16,13 +16,8 @@ angular.module('pdpSliderApp')
             ///////////////
             // Functions //
             ///////////////
-            function setToStartFn() {
-                $scope.curSlide = 1;
-                $scope.$broadcast('pdpUpdate');
-            }
-
-            function setToEndFn() {
-                $scope.curSlide = 8;
+            function setSlideFn(num) {
+                $scope.curSlide = num;
                 $scope.$broadcast('pdpUpdate');
             }
 
@@ -43,7 +38,6 @@ angular.module('pdpSliderApp')
 
             $scope.curSlide = 7;
 
-            $scope.setToStart = setToStartFn;
-            $scope.setToEnd = setToEndFn;
+            $scope.setSlide = setSlideFn;
         }
     ]);

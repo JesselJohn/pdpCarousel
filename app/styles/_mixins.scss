@@ -1,0 +1,4 @@
+@mixin text-shadow($values) {
+    text-shadow: $values;
+    filter: progid:DXImageTransform.Microsoft.Shadow(color=#0000FF, direction=45);
+}
