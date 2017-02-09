@@ -25,6 +25,7 @@
 }
 
 .pdp-carousel-item {
+    position: relative;
     display: inline-block;
     white-space: normal;
     vertical-align: middle;
@@ -51,15 +52,16 @@
 
 .carousel-fullscreen {
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 0;
+    @include translate(0, -50%);
 }
 
 .close-button {
     @include text-shadow(0 0 2px #FFF);
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 15px;
+    right: 15px;
     font-size: 45px;
     height: 40px;
     display: inline-block;
